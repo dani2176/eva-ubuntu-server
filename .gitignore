@@ -1,0 +1,9 @@
+# Credenciales Google
+credentials.json
+client_secret*.json
+
+# Tokens OAuth
+token.json
+
+# Credenciales dentro del proyecto
+backup_gdrive/config/*.json
