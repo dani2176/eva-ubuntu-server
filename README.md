@@ -343,6 +343,58 @@ Responsable de:
 
 ![VS Code SSH](imagenes/vscode_ssh.png)
 
+## 12. Código del script backup_gdrive.sh
+
+![Código backup](imagenes/codigo%20script%20backup%20gdrive.png)
+
+---
+
+## 13. Ejecución manual del sistema de respaldo
+
+![Ejecución manual](imagenes/ejecucion%20manual%20script%20backup.png)
+
+---
+
+## 14. Verificación del directorio scripts
+
+![Directorio scripts](imagenes/verificacion%20directorio%20scripts.png)
+
+---
+
+## 15. Contenido de la carpeta temporal (temp)
+
+![Carpeta temp](imagenes/contenido%20carpeta%20temp.png)
+
+---
+
+## 16. Lectura inicial del archivo de logs
+
+![Logs](imagenes/lectura%20inicial%20log%20backup.png)
+
+---
+
+## 17. Configuración de la tarea programada con Cron
+
+![Crontab](imagenes/edicion%20crontab%20nano.png)
+
+---
+
+## 18. Verificación de la configuración de Cron
+
+![Verificación Cron](imagenes/verificacion%20configuracion%20cron.png)
+
+---
+
+## 19. Inspección final de archivos y registros
+
+![Inspección final](imagenes/inspeccion%20final%20archivos%20y%20logs.png)
+
+---
+
+## 20. Problemas encontrados durante el desarrollo
+
+![Problemas](imagenes/problemas%20con%20las%20conexiones.png)
+
 ---
 
 # Resultado final
