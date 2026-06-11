@@ -281,47 +281,27 @@ Se utilizó para:
 
 # Evidencias
 
-# Evidencias
+![Creación del proyecto](imagenes/creando projecto en google cloud.png)
 
-## Creación del proyecto en Google Cloud
+![Google Drive API](imagenes/habilitar google Drive API.png)
 
-![Creación del proyecto](creando proyecto en google cloud.png)
+![Cliente OAuth](imagenes/Creacion del cliente de OAuth.png)
 
-## Habilitación de Google Drive API
+![JSON descargado](imagenes/JSON descargado.png)
 
-![Google Drive API](habilitar google Drive API.png)
+![Creación de carpetas](imagenes/creacion de carpetas.png)
 
-## Creación del cliente OAuth2
+![auth_gdrive](imagenes/creacion de auth_gdrive.sh.png)
 
-![Cliente OAuth](Creacion del cliente de OAuth.png)
+![Permisos](imagenes/dando permisos a nano auth_gdrive.sh.png)
 
-## Descarga del archivo JSON
+![Ejecución refresh token](imagenes/ejecucion de .refresh_token.sh.png)
 
-![JSON descargado](JSON descargado.png)
+![Refresh terminado](imagenes/refresh_token.sh terminado.png)
 
-## Creación de carpetas
+![Código refresh token](imagenes/codigo del refresh_tokensh.png)
 
-![Creación de carpetas](creacion de carpetas.png)
-
-## Creación de auth_gdrive.sh
-
-![auth_gdrive](creacion de auth_gdrive.sh.png)
-
-## Asignación de permisos al script
-
-![Permisos](dando permisos a nano auth_gdrive.sh.png)
-
-## Ejecución de refresh_token.sh
-
-![Refresh Token](ejecucion de .refresh_token.sh.png)
-
-## Finalización correcta de refresh_token.sh
-
-![Refresh completado](refresh token.sh terminado.png)
-
-## Conexión remota Ubuntu Server mediante VS Code SSH
-
-![VS Code SSH](ubuntu server y vs code ssh funcionando.png)
+![VS Code SSH](imagenes/ubuntu server y vs code ssh funcionando.png)
 
 ---
 
