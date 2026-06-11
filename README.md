@@ -285,43 +285,43 @@ Se utilizó para:
 
 ## Creación del proyecto en Google Cloud
 
-![Creación del proyecto](imagenes/creando proyecto en google cloud.png)
+![Creación del proyecto](creando proyecto en google cloud.png)
 
 ## Habilitación de Google Drive API
 
-![Google Drive API](imagenes/habilitar google Drive API.png)
+![Google Drive API](habilitar google Drive API.png)
 
 ## Creación del cliente OAuth2
 
-![Cliente OAuth](imagenes/Creacion del cliente de OAuth.png)
+![Cliente OAuth](Creacion del cliente de OAuth.png)
 
 ## Descarga del archivo JSON
 
-![JSON descargado](imagenes/JSON descargado.png)
+![JSON descargado](JSON descargado.png)
 
 ## Creación de carpetas
 
-![Creación de carpetas](imagenes/creacion de carpetas.png)
+![Creación de carpetas](creacion de carpetas.png)
 
 ## Creación de auth_gdrive.sh
 
-![auth_gdrive](imagenes/creacion de auth_gdrive.sh.png)
+![auth_gdrive](creacion de auth_gdrive.sh.png)
 
 ## Asignación de permisos al script
 
-![Permisos](imagenes/dando permisos a nano auth_gdrive.sh.png)
+![Permisos](dando permisos a nano auth_gdrive.sh.png)
 
 ## Ejecución de refresh_token.sh
 
-![Refresh Token](imagenes/ejecucion de .refresh_token.sh.png)
+![Refresh Token](ejecucion de .refresh_token.sh.png)
 
 ## Finalización correcta de refresh_token.sh
 
-![Refresh completado](imagenes/refresh token.sh terminado.png)
+![Refresh completado](refresh token.sh terminado.png)
 
 ## Conexión remota Ubuntu Server mediante VS Code SSH
 
-![VS Code SSH](imagenes/ubuntu server y vs code ssh funcionando.png)
+![VS Code SSH](ubuntu server y vs code ssh funcionando.png)
 
 ---
 
