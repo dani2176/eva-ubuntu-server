@@ -1,22 +1,21 @@
 # Credenciales Google
 credentials.json
 client_secret*.json
-
-# Tokens OAuth
-token.json
-
-# Credenciales dentro del proyecto
-backup_gdrive/config/*.json
-
-# Credenciales Google
-credentials.json
-client_secret*.json
 token.json
 backup_gdrive/config/*.json
 
 # Logs
 *.log
+logs/
+backup_gdrive/logs/
 
 # Respaldos temporales
 *.tar.gz
-backup_gdrive/temp/*
+backup_gdrive/temp/
+
+# VS Code
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
