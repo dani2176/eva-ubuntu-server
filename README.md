@@ -78,7 +78,8 @@ Desarrollar un sistema automatizado de respaldo utilizando Bash y Google Drive c
 
 # Estructura del Proyecto
 
-```text
+text
+
 mi_proyecto/
 │
 ├── auth_gdrive.sh
@@ -112,7 +113,8 @@ mi_proyecto/
 
 ## 1. Actualizar Ubuntu
 
-```bash
+bash
+
 sudo apt update
 sudo apt upgrade -y
 ```
@@ -123,25 +125,29 @@ sudo apt upgrade -y
 
 Instalar Git:
 
-```bash
+bash
+
 sudo apt install git -y
 ```
 
 Instalar Curl:
 
-```bash
+bash
+
 sudo apt install curl -y
 ```
 
 Instalar jq:
 
-```bash
+bash
+
 sudo apt install jq -y
 ```
 
 Verificar instalación:
 
-```bash
+bash
+
 git --version
 curl --version
 jq --version
@@ -151,13 +157,15 @@ jq --version
 
 ## 3. Clonar el Repositorio
 
-```bash
+bash
+
 git clone git@github.com:dani2176/eva-ubuntu-server.git
 ```
 
 Ingresar al proyecto:
 
-```bash
+bash
+
 cd eva-ubuntu-server
 ```
 
@@ -181,7 +189,8 @@ cd eva-ubuntu-server
 
 Guardar el archivo descargado como:
 
-```text
+text
+
 backup_gdrive/config/credentials.json
 ```
 
@@ -191,13 +200,15 @@ backup_gdrive/config/credentials.json
 
 Dar permisos:
 
-```bash
+bash
+
 chmod +x auth_gdrive.sh
 ```
 
 Ejecutar:
 
-```bash
+bash
+
 ./auth_gdrive.sh
 ```
 
@@ -210,7 +221,8 @@ El script mostrará una URL.
 
 Se generará automáticamente:
 
-```text
+text
+
 backup_gdrive/config/token.json
 ```
 
@@ -220,7 +232,8 @@ backup_gdrive/config/token.json
 
 Ejecutar:
 
-```bash
+bash
+
 ./refresh_token.sh
 ```
 
@@ -232,13 +245,16 @@ Este script genera automáticamente un nuevo Access Token utilizando el Refresh 
 
 Dar permisos:
 
-```bash
+
+bash
+
 chmod +x backup_gdrive/scripts/backup_gdrive.sh
 ```
 
 Ejecutar:
 
-```bash
+bash
+
 ./backup_gdrive/scripts/backup_gdrive.sh
 ```
 
