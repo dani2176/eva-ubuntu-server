@@ -1,342 +1,397 @@
-# Sistema de Respaldo Automático a Google Drive con Bash
+# Sistema de Respaldo Automático en Google Drive
 
-## Autores
+## Descripción
 
-### Daniel Videla
+Proyecto desarrollado en Ubuntu Server mediante conexión SSH desde Visual Studio Code.
 
-Responsabilidades:
-
-* Instalación y configuración de Ubuntu Server.
-* Configuración de Git y GitHub.
-* Configuración de ZeroTier.
-* Configuración de acceso remoto mediante SSH.
-* Implementación de autenticación OAuth2 con Google.
-* Desarrollo del script `auth_gdrive.sh`.
-* Desarrollo del script `refresh_token.sh`.
-* Configuración de Google Cloud Console.
-* Integración con Google Drive API.
-* Pruebas de autenticación y generación de tokens.
-
-### Nicolas Bastidas
-
-Responsabilidades:
-
-* Desarrollo del script principal de respaldo.
-* Implementación de compresión mediante `tar`.
-* Automatización de generación de archivos `.tar.gz`.
-* Implementación del sistema de logs.
-* Integración de subida de archivos a Google Drive.
-* Validación de respaldos generados.
-* Pruebas de funcionamiento del sistema completo.
-* Corrección de errores y optimización del script final.
+El objetivo del proyecto es implementar un sistema automatizado de respaldo de archivos utilizando Google Drive como almacenamiento en la nube. Para ello se configuró la autenticación OAuth 2.0, la API de Google Drive, scripts Bash y tareas programadas mediante Cron.
 
 ---
 
-# Descripción del Proyecto
 
-Este proyecto consiste en un sistema automatizado de respaldo desarrollado en Bash para Ubuntu Server.
+# Distribución del Trabajo
 
-El sistema genera una copia comprimida del proyecto, la almacena temporalmente en el servidor y posteriormente la envía automáticamente a Google Drive utilizando la API oficial de Google Drive y autenticación OAuth2.
+## Daniel Videla
 
-Además, todas las acciones realizadas por el sistema quedan registradas en un archivo de log para facilitar la supervisión y auditoría de los respaldos.
+* Creación y configuración del repositorio GitHub.
+* Conexión remota mediante SSH desde Visual Studio Code.
+* Creación de la estructura del proyecto.
+* Desarrollo y pruebas de scripts Bash.
+* Configuración de permisos de ejecución.
+* Integración con Git y GitHub.
+* Elaboración de documentación y README.
+* Registro y recopilación de evidencias.
 
----
+## Nicolas Bastidas
 
-# Objetivos
-
-## Objetivo General
-
-Desarrollar un sistema automatizado de respaldo utilizando Bash y Google Drive como plataforma de almacenamiento en la nube.
-
-## Objetivos Específicos
-
-* Generar respaldos automáticos comprimidos.
-* Implementar autenticación segura mediante OAuth2.
-* Automatizar la actualización de tokens.
-* Almacenar respaldos en Google Drive.
-* Registrar eventos en archivos de log.
-* Aplicar trabajo colaborativo utilizando GitHub.
+* Configuración del proyecto en Google Cloud.
+* Habilitación de Google Drive API.
+* Configuración de OAuth 2.0.
+* Generación de credenciales.
+* Validación de autenticación con Google Drive.
+* Configuración de tareas programadas mediante Cron.
+* Verificación de respaldos y pruebas finales.
 
 ---
 
 # Tecnologías Utilizadas
 
-* Ubuntu Server 22.04
-* Bash Script
-* Google Drive API
-* OAuth2
+* Ubuntu Server
+* Visual Studio Code (Remote SSH)
 * Git
 * GitHub
-* Visual Studio Code
-* Remote SSH
-* ZeroTier
-* curl
+* Bash Script
+* Google Cloud Platform
+* Google Drive API
+* OAuth 2.0
+* Cron
+* Curl
 * jq
-* tar
+* Tar
 
 ---
 
 # Estructura del Proyecto
 
-text
-
+```text
 mi_proyecto/
 │
 ├── auth_gdrive.sh
 ├── refresh_token.sh
-├── README.md
+├── backup_gdrive/
+│   ├── config/
+│   │   ├── credentials.json
+│   │   └── token.json
+│   │
+│   ├── logs/
+│   │
+│   ├── scripts/
+│   │
+│   └── temp/
+│
+├── imagenes/
+│
 ├── .gitignore
 │
-├── backup_gdrive/
-│
-├── config/
-│   ├── credentials.json
-│   ├── token.json
-│   └── .gitkeep
-│
-├── logs/
-│   ├── backup.log
-│   └── .gitkeep
-│
-├── scripts/
-│   ├── backup_gdrive.sh
-│   └── .gitkeep
-│
-└── temp/
-    ├── backup_fecha.tar.gz
-    └── .gitkeep
+└── README.md
 ```
 
 ---
 
-# Instalación Paso a Paso
+# Funcionalidades
 
-## 1. Actualizar Ubuntu
+## Autenticación OAuth 2.0
 
-bash
+Permite la conexión segura con Google Drive utilizando autorización basada en OAuth.
 
-sudo apt update
-sudo apt upgrade -y
+## Generación de Tokens
+
+Obtención automática de:
+
+* Access Token
+* Refresh Token
+
+## Renovación Automática
+
+Actualización automática del token de acceso mediante Refresh Token.
+
+## Respaldo de Archivos
+
+Generación de archivos comprimidos en formato:
+
+```text
+.tar.gz
 ```
+
+## Registro de Eventos
+
+Almacenamiento de actividad y errores mediante archivos de log.
+
+## Automatización
+
+Programación de tareas automáticas mediante Cron.
 
 ---
 
-## 2. Instalar Dependencias
+# Configuración de Google Cloud
 
-Instalar Git:
+## Creación del Proyecto
 
-bash
+Nombre del proyecto:
 
-sudo apt install git -y
+```text
+Respaldo-Google-Drive
 ```
 
-Instalar Curl:
+## API Habilitada
 
-bash
-
-sudo apt install curl -y
+```text
+Google Drive API
 ```
 
-Instalar jq:
+## Configuración OAuth
 
-bash
+Tipo de aplicación:
 
-sudo apt install jq -y
+```text
+Aplicación de escritorio
 ```
 
-Verificar instalación:
+Credenciales generadas:
 
-bash
-
-git --version
-curl --version
-jq --version
-```
+* Client ID
+* Client Secret
 
 ---
 
-## 3. Clonar el Repositorio
+# Scripts Implementados
 
-bash
+## auth_gdrive.sh
 
-git clone git@github.com:dani2176/eva-ubuntu-server.git
-```
+Funciones:
 
-Ingresar al proyecto:
-
-bash
-
-cd eva-ubuntu-server
-```
+* Solicitar autorización OAuth.
+* Obtener código de autorización.
+* Generar token inicial.
+* Guardar token.json.
 
 ---
 
-## 4. Configuración de Google Cloud
+## refresh_token.sh
 
-### Crear Proyecto
+Funciones:
 
-1. Acceder a Google Cloud Console.
-2. Crear un nuevo proyecto.
-3. Habilitar Google Drive API.
-
-### Crear Credenciales OAuth
-
-1. APIs y Servicios.
-2. Credenciales.
-3. Crear ID de Cliente OAuth.
-4. Aplicación de Escritorio.
-5. Descargar archivo JSON.
-
-Guardar el archivo descargado como:
-
-text
-
-backup_gdrive/config/credentials.json
-```
+* Renovar Access Token.
+* Utilizar Refresh Token.
+* Actualizar token.json automáticamente.
 
 ---
 
-## 5. Generar Token de Acceso
+## backup_gdrive.sh
 
-Dar permisos:
+Funciones:
 
-bash
+* Crear respaldo comprimido.
+* Registrar actividad en logs.
+* Subir archivos a Google Drive.
+* Gestionar respaldos temporales.
 
+---
+
+# Comandos Utilizados
+
+## Permisos de ejecución
+
+```bash
 chmod +x auth_gdrive.sh
+chmod +x refresh_token.sh
+chmod +x backup_gdrive.sh
 ```
 
-Ejecutar:
+## Autenticación OAuth
 
-bash
-
+```bash
 ./auth_gdrive.sh
 ```
 
-El script mostrará una URL.
+## Actualización de Token
 
-1. Abrir la URL en un navegador.
-2. Autorizar acceso a Google Drive.
-3. Copiar el código entregado por Google.
-4. Pegar el código en la terminal.
-
-Se generará automáticamente:
-
-text
-
-backup_gdrive/config/token.json
-```
-
----
-
-## 6. Actualizar Token
-
-Ejecutar:
-
-bash
-
+```bash
 ./refresh_token.sh
 ```
 
-Este script genera automáticamente un nuevo Access Token utilizando el Refresh Token almacenado.
+## Ejecución de Respaldo
+
+```bash
+./backup_gdrive.sh
+```
+
+## Revisión de Logs
+
+```bash
+cat backup_gdrive/logs/backup.log
+```
 
 ---
 
-## 7. Ejecutar Respaldo
+# Configuración de GitHub
 
-Dar permisos:
+Repositorio utilizado:
 
-
-bash
-
-chmod +x backup_gdrive/scripts/backup_gdrive.sh
+```text
+eva-ubuntu-server
 ```
 
-Ejecutar:
+Comandos utilizados:
 
-bash
-
-./backup_gdrive/scripts/backup_gdrive.sh
+```bash
+git add .
+git commit -m "mensaje"
+git push origin main
+git pull origin main
 ```
-
-El sistema realizará:
-
-1. Compresión del proyecto.
-2. Generación del archivo `.tar.gz`.
-3. Actualización automática del token.
-4. Subida a Google Drive.
-5. Registro de eventos en el log.
 
 ---
 
-# Trabajo Colaborativo
+# Configuración de .gitignore
 
-Para permitir el desarrollo desde ubicaciones distintas se implementó:
+```text
+# Credenciales Google
+credentials.json
+client_secret*.json
+token.json
+backup_gdrive/config/*.json
 
-## ZeroTier
+# Logs
+*.log
+logs/
+backup_gdrive/logs/
 
-Se creó una red privada virtual que permitió conectar ambos equipos al servidor Ubuntu.
+# Respaldos temporales
+*.tar.gz
+backup_gdrive/temp/
 
-## SSH
+# VS Code
+.vscode/
 
-Se habilitó acceso remoto seguro al servidor.
-
-## Visual Studio Code Remote SSH
-
-Permitió editar archivos directamente desde cada computador sin necesidad de trabajar físicamente en el servidor.
-
-## GitHub
-
-Se utilizó para:
-
-* Control de versiones.
-* Sincronización del proyecto.
-* Trabajo colaborativo.
-* Respaldo del código fuente.
+# Python
+__pycache__/
+*.pyc
+```
 
 ---
 
 # Evidencias
 
-![Creación del proyecto](imagenes/creando projecto en google cloud.png)
+## Captura 1 – Creación del repositorio
 
-![Google Drive API](imagenes/habilitar google Drive API.png)
-
-![Cliente OAuth](imagenes/Creacion del cliente de OAuth.png)
-
-![JSON descargado](imagenes/JSON descargado.png)
-
-![Creación de carpetas](imagenes/creacion de carpetas.png)
-
-![auth_gdrive](imagenes/creacion de auth_gdrive.sh.png)
-
-![Permisos](imagenes/dando permisos a nano auth_gdrive.sh.png)
-
-![Ejecución refresh token](imagenes/ejecucion de .refresh_token.sh.png)
-
-![Refresh terminado](imagenes/refresh_token.sh terminado.png)
-
-![Código refresh token](imagenes/codigo del refresh_tokensh.png)
-
-![VS Code SSH](imagenes/ubuntu server y vs code ssh funcionando.png)
+![Captura 1](imagenes/creacion de carpetas.png)
 
 ---
 
-# Resultados Obtenidos
+## Captura 2 – Creación de auth_gdrive.sh
 
-Se logró implementar exitosamente un sistema de respaldo automático funcional utilizando Bash y Google Drive API.
-
-El sistema permite:
-
-* Generar respaldos comprimidos.
-* Subir archivos automáticamente a Google Drive.
-* Mantener autenticación segura mediante OAuth2.
-* Registrar todas las operaciones realizadas.
-* Trabajar colaborativamente desde diferentes ubicaciones utilizando GitHub y Visual Studio Code Remote SSH.
+![Captura 2](imagenes/creacion de auth_gdrive.sh.png)
 
 ---
 
-# Repositorio
+## Captura 3 – Creación del proyecto en Google Cloud
 
-GitHub:
+![Captura 3](imagenes/creando projecto en google cloud.png)
 
-[git@github.com](mailto:git@github.com):dani2176/eva-ubuntu-server.git
+---
+
+## Captura 4 – Google Drive API habilitada
+
+![Captura 4](imagenes/habilitar google Drive API.png)
+
+---
+
+## Captura 5 – Creación del cliente OAuth
+
+![Captura 5](imagenes/Creacion del cliente de OAuth.png)
+
+---
+
+## Captura 6 – Asignación de permisos
+
+![Captura 6](imagenes/dando permisos a nano auth_gdrive.sh.png)
+
+---
+
+## Captura 7 – Código de refresh_token.sh
+
+![Captura 7](imagenes/codigo del refresh_tokensh.png)
+
+---
+
+## Captura 8 – Editor abierto con auth_gdrive.sh
+
+![Captura 8](imagenes/creacion de auth_gdrive.sh.png)
+
+---
+
+## Captura 9 – Ejecución de refresh_token.sh
+
+![Captura 9](imagenes/ejecucion de .refresh_token.sh.png)
+
+---
+
+## Captura 10 – Token generado correctamente
+
+![Captura 10](imagenes/codigo del refresh_tokensh.png)
+
+---
+
+## Captura 11 – Código de backup_gdrive.sh
+
+![Captura 11](imagenes/codigo script backup gdrive.png)
+
+---
+
+## Captura 12 – Ejecución manual del respaldo
+
+![Captura 12](imagenes/ejecucion manual script backup.png)
+
+---
+
+## Captura 13 – Lectura inicial del log
+
+![Captura 13](imagenes/lectura inicial log backup.png)
+
+---
+
+## Captura 14 – Contenido de carpeta temporal
+
+![Captura 14](imagenes/contenido carpeta temp.png)
+
+---
+
+## Captura 15 – Edición de crontab
+
+![Captura 15](imagenes/edicion crontab nano.png)
+
+---
+
+## Captura 16 – Verificación de configuración Cron
+
+![Captura 16](imagenes/verificacion configuracion cron.png)
+
+---
+
+## Captura 17 – Verificación del directorio scripts
+
+![Captura 17](imagenes/verificacion directorio scripts.png)
+
+---
+
+## Captura 18 – Problemas de conexión y solución
+
+![Captura 18](imagenes/problemas con las conexiones.png)
+
+---
+
+## Captura 19 – Inspección final de archivos y logs
+
+![Captura 19](imagenes/inspeccion final archivos y logs.png)
+
+---
+
+# Conclusiones
+
+Durante el desarrollo del proyecto se logró implementar exitosamente un sistema automatizado de respaldo utilizando Google Drive como almacenamiento en la nube.
+
+Se configuró la autenticación OAuth 2.0, la API de Google Drive, scripts Bash para automatización de tareas y programación mediante Cron, permitiendo la ejecución automática de respaldos y la gestión segura de credenciales.
+
+El proyecto permitió aplicar conocimientos relacionados con administración de servidores Linux, automatización, servicios en la nube, control de versiones con Git y documentación técnica.
+
+---
+
+# Autor(es)
+
+Daniel Videla
+Nicolas Bastidas
+
+Ingeniería en Telecomunicaciones
+
+INACAP
